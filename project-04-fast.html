@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>FAST 기반 뇌졸중 조기 진단 캡스톤</title>
+  <link rel="stylesheet" href="./site.css" />
+</head>
+<body>
+  <div class="wrap">
+    <header class="hero">
+      <h1>FAST 기반 뇌졸중 조기 진단 캡스톤</h1>
+      <p>문제정의 → 특징 설계(얼굴/팔/음성) → 단계형 UI 결과</p>
+      <div class="meta">
+        <span>Focus: 문제 해결력</span>
+        <span>15p</span>
+        <span>최종발표.pdf</span>
+      </div>
+      <div class="btns">
+        <a class="btn" href="./index.html">목록으로</a>
+        <a class="btn primary" href="./최종발표.pdf">PDF 열기</a>
+      </div>
+    </header>
+
+    <section class="section">
+      <h2>프로젝트 요약</h2>
+      <p class="headline">FAST 원칙 기반으로 얼굴/팔/음성 특징을 정의하고, MLP 판단과 단계형 UI 흐름을 구성한 캡스톤입니다.</p>
+      <div class="kpi"><span>좌우 비대칭 기준 설계</span><span>멀티모달(얼굴/팔/음성)</span><span>단계형 UI</span></div>
+    </section>
+
+    <section class="section">
+      <h2>어떤 식으로 진행했는지</h2>
+      <ol class="method-list">
+        
+        <li class="method-item">
+          <div class="method-head">
+            <span class="method-no">01</span>
+            <h3>주제 및 배경 정의 (p.2, p.4)</h3>
+          </div>
+          <p>FAST 기반 뇌졸중 감지 시스템을 주제로 선정하고, 골든타임 내 전조 증상 인지의 어려움을 문제로 정의함.</p>
+        </li>
+
+        <li class="method-item">
+          <div class="method-head">
+            <span class="method-no">02</span>
+            <h3>시스템 플로우 제시 (p.6)</h3>
+          </div>
+          <p>얼굴→팔→음성 순서로 측정하는 흐름을 시스템 플로우로 구성함.</p>
+        </li>
+
+        <li class="method-item">
+          <div class="method-head">
+            <span class="method-no">03</span>
+            <h3>구현 방식 설계 (p.7)</h3>
+          </div>
+          <p>MediaPipe Face Mesh(얼굴 468좌표), MediaPipe Pose+Hands(팔/손 좌표), Praat+parselmouth(음성 특징), WebSocket 통신 구조를 사용함.</p>
+        </li>
+
+        <li class="method-item">
+          <div class="method-head">
+            <span class="method-no">04</span>
+            <h3>얼굴 특징 설계 (p.8)</h3>
+          </div>
+          <p>Yaw/Roll, 입꼬리 거리·기울기, 좌우 비대칭 좌표를 특징으로 수집하고 MLP로 얼굴 비대칭 여부를 판단함.</p>
+        </li>
+
+        <li class="method-item">
+          <div class="method-head">
+            <span class="method-no">05</span>
+            <h3>팔 특징 설계 (p.9)</h3>
+          </div>
+          <p>어깨/팔꿈치/손목+손가락 좌표, 좌우 팔 벡터 각도 차, 손목 깊이·높이 차, 손 방향(손가락 3차원 좌표 포함)으로 MLP를 학습함.</p>
+        </li>
+
+        <li class="method-item">
+          <div class="method-head">
+            <span class="method-no">06</span>
+            <h3>음성 특징 설계 (p.10)</h3>
+          </div>
+          <p>Jitter/Shimmer/Intensity를 추출하고 3 Hidden Layer + ReLU + Dropout(40%) 구조로 음성 이상 여부를 판단함.</p>
+        </li>
+
+        <li class="method-item">
+          <div class="method-head">
+            <span class="method-no">07</span>
+            <h3>실시간 통신 구성 (p.11)</h3>
+          </div>
+          <p>WebSocket 기반 실시간 양방향 통신 구조를 적용함.</p>
+        </li>
+
+        <li class="method-item">
+          <div class="method-head">
+            <span class="method-no">08</span>
+            <h3>UI 단계 구성 (p.12)</h3>
+          </div>
+          <p>얼굴 감지→팔 측정→음성 측정→최종 결과 화면 순서의 단계형 UI를 제시함.</p>
+        </li>
+
+      </ol>
+      <p class="small">위 단계는 「최종발표.pdf」의 p.2~12 기준으로 정리했습니다.</p>
+    </section>
+
+    <section class="section">
+      <h2>프로젝트 PDF 바로보기</h2>
+      <p class="headline">페이지 내에서 바로 확인하고, 필요하면 원본 PDF를 별도 탭으로 열어보세요.</p>
+      <div class="pdf-wrap">
+        <iframe src="./최종발표.pdf" title="FAST 기반 뇌졸중 조기 진단 캡스톤 PDF"></iframe>
+      </div>
+    </section>
+  </div>
+</body>
+</html>

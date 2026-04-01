@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>D사(MVNO) 이탈 감소 및 LTV 재설계</title>
+  <link rel="stylesheet" href="./site.css" />
+</head>
+<body>
+  <div class="wrap">
+    <header class="hero">
+      <h1>D사(MVNO) 이탈 감소 및 LTV 재설계</h1>
+      <p>목표(-24%) → LTV 재정의 → 이탈 예측 → 우선순위 운영 설계</p>
+      <div class="meta">
+        <span>Focus: 데이터 설계력</span>
+        <span>25p</span>
+        <span>디지털하나로 8기 3차조 - 미니프로젝트.pdf</span>
+      </div>
+      <div class="btns">
+        <a class="btn" href="./index.html">목록으로</a>
+        <a class="btn primary" href="./디지털하나로 8기 3차조 - 미니프로젝트.pdf">PDF 열기</a>
+      </div>
+    </header>
+
+    <section class="section">
+      <h2>프로젝트 요약</h2>
+      <p class="headline">포화 시장 환경에서 이탈률 -24%를 목표로 이탈확률·잔존확률·유지기간·매출예측을 통합하고 myLTV 재정의와 운영 흐름을 제시한 프로젝트입니다.</p>
+      <div class="kpi"><span>1년 내 이탈률 -24% 목표</span><span>myLTV 재정의</span><span>운영 플로우 설계</span></div>
+    </section>
+
+    <section class="section">
+      <h2>어떤 식으로 진행했는지</h2>
+      <ol class="method-list">
+        
+        <li class="method-item">
+          <div class="method-head">
+            <span class="method-no">01</span>
+            <h3>프로젝트 목표 정의 (p.3)</h3>
+          </div>
+          <p>1년 내 고객 이탈률 -24% 목표를 설정하고, 기존 LTV 신뢰도/이탈·매출 관리 모형 부재를 핵심 문제로 정의함.</p>
+        </li>
+
+        <li class="method-item">
+          <div class="method-head">
+            <span class="method-no">02</span>
+            <h3>특성요인도 작성 (p.4~5)</h3>
+          </div>
+          <p>Product/Price/People/Promotion/Suppliers 축으로 요금제·결제·사용행태·이탈정보·공급망 요인을 구조화함.</p>
+        </li>
+
+        <li class="method-item">
+          <div class="method-head">
+            <span class="method-no">03</span>
+            <h3>데이터 수집성 평가 (p.6~7)</h3>
+          </div>
+          <p>상품/가격/프로모션/고객 변수별 수집가능성·중요도 총점을 정리하고 주요 변수 후보를 확정함.</p>
+        </li>
+
+        <li class="method-item">
+          <div class="method-head">
+            <span class="method-no">04</span>
+            <h3>변수 정의 (p.8)</h3>
+          </div>
+          <p>고객ID, 연령, 결혼여부, 부양자수, 추천횟수, 과금방식, 보안/백업/기술지원, 이탈가능점수, 만족도, 로밍사용료 등을 정의함.</p>
+        </li>
+
+        <li class="method-item">
+          <div class="method-head">
+            <span class="method-no">05</span>
+            <h3>파생변수 설계 (p.9)</h3>
+          </div>
+          <p>유지개월수, 예측 유지기간, 남은 예측 개월수, 월별 이탈률, myLTV, 30/180/365일 잔존확률, 기대잔존기간, 예상 이탈일자를 설계함.</p>
+        </li>
+
+        <li class="method-item">
+          <div class="method-head">
+            <span class="method-no">06</span>
+            <h3>외부데이터 결합 (p.10)</h3>
+          </div>
+          <p>환율(달러/위안/엔/유로), 소비자물가지수, 알뜰폰 검색량, 통신3사/알뜰폰 가입자 현황을 변수로 결합함.</p>
+        </li>
+
+        <li class="method-item">
+          <div class="method-head">
+            <span class="method-no">07</span>
+            <h3>이탈예측모형 구축 (p.11)</h3>
+          </div>
+          <p>RandomForest/XGBoost/LightGBM 하이퍼파라미터 비교로 Precision·Recall·F1을 평가함.</p>
+        </li>
+
+        <li class="method-item">
+          <div class="method-head">
+            <span class="method-no">08</span>
+            <h3>이탈확률 구간 분석 (p.12)</h3>
+          </div>
+          <p>0.0~1.0 구간별 고객 수와 실제 이탈 고객 수를 비교하고, 예측 양성 중 실제 미이탈 고객을 방지 타겟으로 활용함.</p>
+        </li>
+
+        <li class="method-item">
+          <div class="method-head">
+            <span class="method-no">09</span>
+            <h3>생존분석 적용 (p.13)</h3>
+          </div>
+          <p>Kaplan-Meier + Cox Proportional Hazards로 잔존확률/기대생존기간을 산출하고 C-index 0.77을 제시함.</p>
+        </li>
+
+        <li class="method-item">
+          <div class="method-head">
+            <span class="method-no">10</span>
+            <h3>잔존확률 추세예측 (p.14)</h3>
+          </div>
+          <p>관측구간은 Cox, 미래구간은 ARIMA/Prophet으로 예측하고 MAE/RMSE/MAPE 비교로 Prophet을 선택함.</p>
+        </li>
+
+        <li class="method-item">
+          <div class="method-head">
+            <span class="method-no">11</span>
+            <h3>유지기간 예측 (p.15~16)</h3>
+          </div>
+          <p>이탈가능점수 65점 이상·만족도 1/2점 고객에 가중치(5배)를 부여해 보수적으로 유지기간을 추정함.</p>
+        </li>
+
+        <li class="method-item">
+          <div class="method-head">
+            <span class="method-no">12</span>
+            <h3>myLTV 재정의 (p.16)</h3>
+          </div>
+          <p>총과금액, 예측 유지기간, 물가지수, 추천 가중치를 반영해 기존 LTV 대신 재정의한 LTV를 산출함.</p>
+        </li>
+
+        <li class="method-item">
+          <div class="method-head">
+            <span class="method-no">13</span>
+            <h3>매출예측모형 구축 (p.17)</h3>
+          </div>
+          <p>월별 매출 예측에서 SARIMAX/Prophet/Random Forest/LightGBM 성능 비교 후 Prophet 활용안을 제시함.</p>
+        </li>
+
+        <li class="method-item">
+          <div class="method-head">
+            <span class="method-no">14</span>
+            <h3>운영 플로우 설계 (p.18)</h3>
+          </div>
+          <p>모니터링→위기 타겟 식별→우선순위 결정→목표 달성의 4단계 사용자 흐름과 월별 재학습 운영안을 제시함.</p>
+        </li>
+
+      </ol>
+      <p class="small">위 단계는 「디지털하나로 8기 3차조 - 미니프로젝트.pdf」의 p.3~18 기준으로 정리했습니다.</p>
+    </section>
+
+    <section class="section">
+      <h2>프로젝트 PDF 바로보기</h2>
+      <p class="headline">페이지 내에서 바로 확인하고, 필요하면 원본 PDF를 별도 탭으로 열어보세요.</p>
+      <div class="pdf-wrap">
+        <iframe src="./디지털하나로 8기 3차조 - 미니프로젝트.pdf" title="D사(MVNO) 이탈 감소 및 LTV 재설계 PDF"></iframe>
+      </div>
+    </section>
+  </div>
+</body>
+</html>
