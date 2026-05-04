@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>시니어 여가·금융 통합 개인화 추천 (하나원큐)</title>
+  <link rel="stylesheet" href="./site.css" />
+</head>
+<body>
+  <div class="wrap">
+    <header class="hero">
+      <h1>시니어 여가·금융 통합 개인화 추천 (하나원큐)</h1>
+      <p>문제정의 → 시니어 군집화 → 여가 추천 → 금융 연계 추천 → UX/운영 설계</p>
+      <div class="meta">
+        <span>Focus: CX 기획력</span>
+        <span>83p</span>
+        <span>project-07-senior-lifecare.pdf</span>
+      </div>
+      <div class="btns">
+        <a class="btn" href="./index.html">목록으로</a>
+        <a class="btn primary" href="./project-07-senior-lifecare.pdf">PDF 열기</a>
+      </div>
+    </header>
+
+    <section class="section">
+      <h2>프로젝트 요약</h2>
+      <p class="headline">시니어의 여가 탐색 불편을 해결하기 위해 여가 프로그램 개인화 추천과 수신 상품 연계 추천을 하나원큐 UX 흐름으로 통합 설계한 프로젝트입니다.</p>
+      <div class="kpi"><span>목표 시니어 MAU +21만명</span><span>연계 추천 사용 의향 65.4%</span><span>원화예수금 14.4% 증가 기대</span></div>
+    </section>
+
+    <section class="section">
+      <h2>어떤 식으로 진행했는지</h2>
+      <ol class="method-list">
+        
+        <li class="method-item">
+          <div class="method-head">
+            <span class="method-no">01</span>
+            <h3>문제정의 (p.2~6)</h3>
+          </div>
+          <p>고령인구·시니어 손님 비중 증가와 여가 정보 접근성 부족(참여 방법/활동 정보 부족)을 핵심 문제로 정의함.</p>
+        </li>
+
+        <li class="method-item">
+          <div class="method-head">
+            <span class="method-no">02</span>
+            <h3>AS-IS 진단 (p.7~9)</h3>
+          </div>
+          <p>하나더넥스트의 오프라인 강점과 온라인 개인화/생활밀착형 연결 한계를 경쟁사 비교 포함해 정리함.</p>
+        </li>
+
+        <li class="method-item">
+          <div class="method-head">
+            <span class="method-no">03</span>
+            <h3>벤치마킹 (p.10)</h3>
+          </div>
+          <p>오뉴 사례(월 평균 이용자 1.8배 증가, 취향 군집 추천 구조)를 참고해 서비스 방향을 구체화함.</p>
+        </li>
+
+        <li class="method-item">
+          <div class="method-head">
+            <span class="method-no">04</span>
+            <h3>목표 설정 (p.11)</h3>
+          </div>
+          <p>시니어 MAU 목표를 약 310만명으로 설정하고, AS-IS 대비 +21만명 증가 목표를 제시함.</p>
+        </li>
+
+        <li class="method-item">
+          <div class="method-head">
+            <span class="method-no">05</span>
+            <h3>수행 일정 수립 (p.13)</h3>
+          </div>
+          <p>데이터 수집·정의→분석→인사이트→개선안→프로토타입까지 분기별 수행 계획을 명시함.</p>
+        </li>
+
+        <li class="method-item">
+          <div class="method-head">
+            <span class="method-no">06</span>
+            <h3>데이터 구조화 (p.14~19)</h3>
+          </div>
+          <p>손님 CRM/상품/커뮤니티/여가 프로그램 변수 정의 및 파생변수(은퇴여부·소득안정성·여유도 등)를 설계함.</p>
+        </li>
+
+        <li class="method-item">
+          <div class="method-head">
+            <span class="method-no">07</span>
+            <h3>분석계획 수립 (p.20~22)</h3>
+          </div>
+          <p>여가 관심사 도출, 손님 군집화, 여가-금융 네트워크 분석, 금융 추천까지 전체 분석 파이프라인을 정의함.</p>
+        </li>
+
+        <li class="method-item">
+          <div class="method-head">
+            <span class="method-no">08</span>
+            <h3>손님 군집화 (p.24~25)</h3>
+          </div>
+          <p>Gower Distance + KMedoids(k=4, silhouette 0.2081)로 6,049행 데이터를 4개 손님군으로 분류함.</p>
+        </li>
+
+        <li class="method-item">
+          <div class="method-head">
+            <span class="method-no">09</span>
+            <h3>여가 분류/군집 매핑 (p.26)</h3>
+          </div>
+          <p>시니어 참여 가능 프로그램 필터링 후 TF-IDF+SBERT 기반 매핑 점수와 시간조건으로 프로그램-손님군을 연결함.</p>
+        </li>
+
+        <li class="method-item">
+          <div class="method-head">
+            <span class="method-no">10</span>
+            <h3>여가 프로그램 개인화 (p.27)</h3>
+          </div>
+          <p>관심사 점수(대/중/소분류)와 하버사인 거리 기반 위치 점수를 결합해 종합 추천 점수를 산출함.</p>
+        </li>
+
+        <li class="method-item">
+          <div class="method-head">
+            <span class="method-no">11</span>
+            <h3>여가-금융 네트워크 분석 (p.28)</h3>
+          </div>
+          <p>게시글 25,806건 기반으로 여가 관심사와 금융 니즈의 연결강도/lift/entropy를 산출함.</p>
+        </li>
+
+        <li class="method-item">
+          <div class="method-head">
+            <span class="method-no">12</span>
+            <h3>수신 상품 추천 로직 (p.29)</h3>
+          </div>
+          <p>군집 대표 유사도(TF-IDF 코사인)와 관심사 기반 가중치를 결합해 개인별 금융상품 Top5를 추천함.</p>
+        </li>
+
+        <li class="method-item">
+          <div class="method-head">
+            <span class="method-no">13</span>
+            <h3>유저 리서치/인사이트 (p.32~33)</h3>
+          </div>
+          <p>5060 대상 조사에서 탐색 어려움 47.6%, 연계 추천 사용 의향 65.4%를 확인하고 페르소나 여정을 설계함.</p>
+        </li>
+
+        <li class="method-item">
+          <div class="method-head">
+            <span class="method-no">14</span>
+            <h3>프로토타입 UX 설계 (p.34~38)</h3>
+          </div>
+          <p>하나원큐 진입→관심사 선택→여가 추천→신청→연계 금융 추천 팝업까지 화면 플로우를 설계함.</p>
+        </li>
+
+        <li class="method-item">
+          <div class="method-head">
+            <span class="method-no">15</span>
+            <h3>운영/확장 전략 (p.44~47)</h3>
+          </div>
+          <p>API 연계 로드맵(약 10개월), 운영지표(CTR/신청률/가입유입률), 협업필터링 확장과 기대효과(원화예수금 14.4%)를 제시함.</p>
+        </li>
+
+      </ol>
+      <p class="small">위 단계는 「[디지털하나로 8기] 8기 최종선택 팀_ 최종 발표 자료.pdf」의 p.2~47 기준으로 정리했습니다.</p>
+    </section>
+
+    <section class="section">
+      <h2>프로젝트 PDF 바로보기</h2>
+      <p class="headline">페이지 내에서 바로 확인하고, 필요하면 원본 PDF를 별도 탭으로 열어보세요.</p>
+      <div class="pdf-wrap">
+        <iframe src="./project-07-senior-lifecare.pdf" title="시니어 여가·금융 통합 개인화 추천 (하나원큐) PDF"></iframe>
+      </div>
+    </section>
+  </div>
+</body>
+</html>
