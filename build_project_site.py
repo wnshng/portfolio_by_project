@@ -680,11 +680,15 @@ def main() -> None:
     (out_dir / "site.css").write_text(CSS, encoding="utf-8")
 
     for project in PROJECTS:
-        source_pdf = resolve_pdf_path(out_dir, project.pdf_match_terms, project.pdf_exclude_terms)
         safe_pdf_name = f"{project.slug}.pdf"
         safe_pdf_path = out_dir / safe_pdf_name
-        if source_pdf.resolve() != safe_pdf_path.resolve():
-            shutil.copy2(source_pdf, safe_pdf_path)
+        # Prefer already-normalized ASCII PDF names for deployment stability.
+        if safe_pdf_path.exists():
+            source_pdf = safe_pdf_path
+        else:
+            source_pdf = resolve_pdf_path(out_dir, project.pdf_match_terms, project.pdf_exclude_terms)
+            if source_pdf.resolve() != safe_pdf_path.resolve():
+                shutil.copy2(source_pdf, safe_pdf_path)
         page_count = len(PdfReader(str(source_pdf)).pages)
         render_project_page(project, page_count, safe_pdf_name, out_dir)
 
