@@ -237,13 +237,13 @@ PROJECTS: List[Project] = [
 ]
 
 DISPLAY_ORDER = [
+    "project-07-senior-lifecare",
     "project-06-travelog",
+    "project-02-mvno",
     "project-01-lsight",
     "project-03-onemart",
     "project-04-fast",
-    "project-02-mvno",
     "project-05-hansum",
-    "project-07-senior-lifecare",
 ]
 
 
