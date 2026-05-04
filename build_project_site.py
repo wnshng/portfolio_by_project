@@ -5,6 +5,7 @@ from pathlib import Path
 from typing import List
 import html
 import unicodedata
+import shutil
 
 from pypdf import PdfReader
 
@@ -543,8 +544,7 @@ def resolve_pdf_path(out_dir: Path, match_terms: List[str], exclude_terms: List[
 def render_index(projects: List[Project], out_dir: Path) -> None:
     cards = []
     for i, project in enumerate(projects, start=1):
-        pdf_path = resolve_pdf_path(out_dir, project.pdf_match_terms, project.pdf_exclude_terms)
-        pdf_name = pdf_path.name
+        pdf_name = f"{project.slug}.pdf"
         flow_steps = [s.strip() for s in project.subtitle.split("→")]
         flow_items = "".join([f"<li>{step}</li>" for step in flow_steps if step])
         cards.append(
@@ -680,10 +680,13 @@ def main() -> None:
     (out_dir / "site.css").write_text(CSS, encoding="utf-8")
 
     for project in PROJECTS:
-        pdf_path = resolve_pdf_path(out_dir, project.pdf_match_terms, project.pdf_exclude_terms)
-        pdf_name = pdf_path.name
-        page_count = len(PdfReader(str(pdf_path)).pages)
-        render_project_page(project, page_count, pdf_name, out_dir)
+        source_pdf = resolve_pdf_path(out_dir, project.pdf_match_terms, project.pdf_exclude_terms)
+        safe_pdf_name = f"{project.slug}.pdf"
+        safe_pdf_path = out_dir / safe_pdf_name
+        if source_pdf.resolve() != safe_pdf_path.resolve():
+            shutil.copy2(source_pdf, safe_pdf_path)
+        page_count = len(PdfReader(str(source_pdf)).pages)
+        render_project_page(project, page_count, safe_pdf_name, out_dir)
 
     project_by_slug = {project.slug: project for project in PROJECTS}
     ordered_projects = [project_by_slug[slug] for slug in DISPLAY_ORDER if slug in project_by_slug]
